@@ -7,7 +7,7 @@ const app = express();
 
 //Database Connection
 await mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log("Connected to MongoDB");
+    console.log("Connected to Database");
 }).catch((err)=>{
     console.log(err)
 });
