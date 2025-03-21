@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import advertsRouter from './Routes/adroute.js';
+import adminRouter from './Routes/admin_routes.js';
 
 //create an express app
 const app = express();
@@ -15,6 +17,10 @@ await mongoose.connect(process.env.MONGO_URI).then(()=>{
 // Use Global middleware
 app.use(cors());
 app.use(express.json());
+
+//Routes
+app.use(advertsRouter);
+app.use(adminRouter);
 
 // Server Listener
 app.listen(3700, () => {

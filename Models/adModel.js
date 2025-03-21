@@ -1,15 +1,17 @@
 import { Schema, model } from "mongoose";
-import normalize from "normalize-mongoose"
+import normalize from "normalize-mongoose";
 
-export const adSchema = new Schema({
-    name: {type:String, required:true},
-    price:{tyep:String, required:true},
-    description:{type:String, required:true},
-    image:{type:String, required:true},
-    quantity:{type: Number, required:true}
+const ad = new Schema(
+  {
+    name: { type: String, required: true },
+    price: { type: String, required: true },
+    description: { type: String, required: true },
+    image: { type: String, required: true },
+    quantity: { type: Number, required: true },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true});
+ad.plugin(normalize);
 
-adSchema.plugin(normalize)
-
-export const adModel = model('Ad', adSchema)
+export const adModel = model("Ad", ad);
