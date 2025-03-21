@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import normalize from "normalize-mongoose";
 
 const ad = new Schema(
@@ -8,6 +8,7 @@ const ad = new Schema(
     description: { type: String, required: true },
     image: { type: String, required: true },
     quantity: { type: Number, required: true },
+    adminId: { type: Types.ObjectId, required: true, ref: "Admin" },
   },
   { timestamps: true }
 );

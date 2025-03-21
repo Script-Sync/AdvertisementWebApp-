@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import {
   adminLoginValidator,
   adminRegisterValidator,
+  updateAdminValidator,
 } from "../Validators/adminValidator.js";
 
 //Register Admin
@@ -45,9 +46,20 @@ export const adminLogin = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid Credential" });
   }
   // Generate access token for admin
-  const token = jwt.sign({ id: admin._id }, process.env.JWT_KEY, {
+  const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: "24h",
   });
   // Return response
   res.status(200).json({ token });
 };
+
+export const updateAdmin = async (req, res) => {
+  const {error, value} = updateAdminValidator.validate(req.body);
+  if (error) {
+    return res.status(422).json(error)
+  }
+
+  const result = await adminModel.findByIdAndUpdate(req.params.id,value,{new:true})
+   
+  res.status(200).json(result)
+}
