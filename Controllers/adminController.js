@@ -7,7 +7,7 @@ import {
 } from "../Validators/adminValidator.js";
 
 //Register Admin
-const registerAdmin = async (req, res, next) => {
+export const registerAdmin = async (req, res, next) => {
   const { error, value } = adminRegisterValidator.validate(req.body);
   if (error) {
     return res.status(422).json(error);
@@ -17,7 +17,7 @@ const registerAdmin = async (req, res, next) => {
   });
   if (admin) {
     return res
-      .status(400)
+      .status(409)
       .json({ message: "Username or Email already exists" });
   }
   const hashedPassword = bcrypt.hashSync(value.password, 10);
@@ -45,6 +45,9 @@ export const adminLogin = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid Credential" });
   }
   // Generate access token for admin
+  const token = jwt.sign({ id: admin._id }, process.env.JWT_KEY, {
+    expiresIn: "24h",
+  });
   // Return response
-  res.status(200).json({});
+  res.status(200).json({ token });
 };
