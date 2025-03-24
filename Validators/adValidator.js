@@ -6,6 +6,7 @@ export const addAdevertDetails = Joi.object({
     price:Joi.string().required(),
     description:Joi.string().required(),
     image:Joi.string().required(),
+    category: Joi.string().required().valid('Television & Accessories', 'video Games', 'Computer Accessories', 'Audio Systems'),
     quantity: Joi.number().integer().required()
 })
 

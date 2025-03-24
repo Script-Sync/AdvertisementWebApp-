@@ -2,7 +2,7 @@ import { expressjwt } from "express-jwt";
 import { adminModel } from "../Models/adminModel.js";
 
 export const isAuthenticated = expressjwt({
-  secret: process.env.JWT_SECRET_KEY,
+  secret: process.env.JWT_KEY,
   algorithms: ["HS256"],
 });
 
