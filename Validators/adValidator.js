@@ -8,6 +8,8 @@ export const addAdevertDetails = Joi.object({
     image:Joi.array().items(Joi.string().required()),
     quantity: Joi.number().integer().required(),
     adminId:Joi.string().required()
+    category: Joi.string().required().valid('Television & Accessories', 'video Games', 'Computer Accessories', 'Audio Systems'),
+    quantity: Joi.number().integer().required()
 })
 
 export const replaceAdvertdetails = Joi.object({

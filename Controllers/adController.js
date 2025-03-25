@@ -1,5 +1,4 @@
 import { adModel } from "../Models/adModel.js";
-import { Types } from "mongoose";
 import {
   addAdevertDetails,
   replaceAdvertdetails,

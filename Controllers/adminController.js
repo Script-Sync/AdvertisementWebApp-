@@ -46,7 +46,7 @@ export const adminLogin = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid Credential" });
   }
   // Generate access token for admin
-  const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET_KEY, {
+  const token = jwt.sign({ id: admin._id }, process.env.JWT_KEY, {
     expiresIn: "24h",
   });
   // Return response
