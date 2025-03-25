@@ -10,9 +10,12 @@ adminRouter.post('/admin/register', registerAdmin);
 
 adminRouter.post('/admin/login', adminLogin);
 
-adminRouter.patch('./admin/:id', updateAdmin)
 
 adminRouter.get('/users/me', isAuthenticated, getAuthenticatedAdmin)
+
+adminRouter.patch('/admin/:id', updateAdmin)
+//adminRouter.patch('/admin/:id', updateUser )
+
 
 
 export default adminRouter;
