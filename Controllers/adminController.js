@@ -50,16 +50,31 @@ export const adminLogin = async (req, res, next) => {
     expiresIn: "24h",
   });
   // Return response
-  res.status(200).json({ token });
+  res
+    .status(200)
+    .json({ token, admin: { role: admin.role, email: admin.email } });
 };
 
 export const updateAdmin = async (req, res) => {
-  const {error, value} = updateAdminValidator.validate(req.body);
+  const { error, value } = updateAdminValidator.validate(req.body);
   if (error) {
-    return res.status(422).json(error)
+    return res.status(422).json(error);
   }
 
-  const result = await adminModel.findByIdAndUpdate(req.params.id,value,{new:true})
-   
-  res.status(200).json(result)
-}
+  const result = await adminModel.findByIdAndUpdate(req.params.id, value, {
+    new: true,
+  });
+
+  res.status(200).json(result);
+};
+
+export const getAuthenticatedAdmin = async (req, res, next) => {
+  try {
+    const result = await adminModel.findById(req.auth.id).select({
+      password: false,
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};

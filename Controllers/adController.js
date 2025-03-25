@@ -25,7 +25,10 @@ export const addAdvert = async (req, res, next) => {
 //Get all advert
 export const getAllAdverts = async (req, res, next) => {
   try {
-    const getAds = await adModel.find();
+    const { filter = "{}", sort = "{}" } = req.query;
+    const getAds = await adModel
+      .find(JSON.parse(filter))
+      .sort(JSON.parse(sort));
     res.status(200).json(getAds);
   } catch (error) {
     next(error);
@@ -48,34 +51,33 @@ export const getAdvertById = async (req, res, next) => {
 
 //Update an advert
 export const replaceAdvert = async (req, res, next) => {
- // Validate incoming request (excluding image)
- const { error } = replaceAdvertdetails.validate(req.body);
- if (error) {
-     return res.status(400).json({ message: error.details[0].message });
- }
- 
- // Check if image was uploaded
- if (!req.file) {
-     return res.status(400).json({ message: "Image is required" });
- }
- 
- // Perform model replace operation
- const results = await adModel.findOneAndReplace(
-     { _id: req.params.id },
-     {
-         ...req.body,
-         image: req.file.filename
-     },
-     { new: true }
- );
- 
- // Return a response
- if (!results) {
-     return res.status(404).json({ message: "Advert not found" });
- }
- res.status(200).json({ results });
-};
+  // Validate incoming request (excluding image)
+  const { error } = replaceAdvertdetails.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
 
+  // Check if image was uploaded
+  if (!req.file) {
+    return res.status(400).json({ message: "Image is required" });
+  }
+
+  // Perform model replace operation
+  const results = await adModel.findOneAndReplace(
+    { _id: req.params.id },
+    {
+      ...req.body,
+      image: req.file.filename,
+    },
+    { new: true }
+  );
+
+  // Return a response
+  if (!results) {
+    return res.status(404).json({ message: "Advert not found" });
+  }
+  res.status(200).json({ results });
+};
 
 //Delete an Advert
 export const deleteAdvert = async (req, res, next) => {
