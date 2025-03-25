@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: process.env.USER_EMAIL,
-        pass: process.env.USER_PASSWORD,
+        user: process.env.G_EMAIL,
+        pass: process.env.G_PASSWORD,
     },
 });
 
@@ -44,7 +44,7 @@ export const sendEmail = async (to, userName, dashboardUrl) => {
     `;
 
     const send = await transporter.sendMail({
-        from: process.env.USER_EMAIL,
+        from: process.env.G_EMAIL,
         to: to,
         subject: "Welcome to LaBorrow - Your Tech Marketplace Awaits!",
         html: htmlTemplate,
