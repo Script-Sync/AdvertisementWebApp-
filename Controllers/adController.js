@@ -8,6 +8,7 @@ import {
 export const addAdvert = async (req, res, next) => {
   try {
     const { error, value } = addAdevertDetails.validate({
+      adminId: req.body.adminId,
       ...req.body,
       image: req.file?.filename,
     });
