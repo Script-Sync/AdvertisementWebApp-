@@ -6,6 +6,7 @@ import {
   adminRegisterValidator,
   updateAdminValidator,
 } from "../Validators/adminValidator.js";
+import { sendEmail, sendEmailAdmin } from "../Utilities/mailing.js";
 
 //Register Admin
 export const registerAdmin = async (req, res, next) => {
@@ -22,12 +23,17 @@ export const registerAdmin = async (req, res, next) => {
       .json({ message: "Username or Email already exists" });
   }
   const hashedPassword = bcrypt.hashSync(value.password, 10);
-  await adminModel.create({
+  const newAdmin = await adminModel.create({
     ...value,
     password: hashedPassword,
   });
   //Tomorrow Add send registration email to user
   res.status(201).json("Admin created successfully");
+  // Admin Registration email
+  const sendWelcomeEmail = sendEmailAdmin(
+    newAdmin.email,
+    `Hello ${newAdmin.username} Welcome to our Admin Portal`
+  )
 };
 
 export const adminLogin = async (req, res, next) => {
