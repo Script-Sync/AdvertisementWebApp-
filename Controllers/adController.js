@@ -10,7 +10,7 @@ export const addAdvert = async (req, res, next) => {
     const { error, value } = addAdevertDetails.validate({
       adminId: req.body.adminId,
       ...req.body,
-      image: req.files?.map((file) => file.filename),
+      image: req.file?.filename,
     });
     if (error) {
       return res.status(422).json(error);
