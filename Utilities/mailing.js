@@ -53,3 +53,63 @@ export const sendEmail = async (to, userName, dashboardUrl) => {
     console.log('Email sent:', send);
 };
 
+
+export const sendEmailAdmin = async (to, adminName, dashboardUrl) => {
+    const htmlTemplate = `
+        <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Laborrow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f9fafb; font-family: 'Poppins', sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f9fafb;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+          <tr>
+            <td align="center">
+              <img src="https://via.placeholder.com/150" alt="Laborrow Logo" style="width: 120px; margin-bottom: 20px;">
+              <h1 style="color: #1d4ed8; font-size: 24px; font-weight: 600;">Welcome to Laborrow!, ${adminName}! </h1>
+              <p style="color: #374151; font-size: 16px; line-height: 1.6;">
+                Congratulations on joining Laborrow, the ultimate rental platform for electronic gadgets. 
+                We are thrilled to have you on board!
+              </p>
+              <p style="color: #374151; font-size: 16px; line-height: 1.6;">
+                As a vendor, you now have the opportunity to rent out your gadgets securely and conveniently, 
+                reaching a wide range of customers looking for short-term tech solutions. Our platform is 
+                designed to ensure a seamless experience for you.
+              </p>
+              <a href="${dashboardUrl}" style="display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #1d4ed8; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+                Get Started
+              </a>
+              <p style="color: #374151; font-size: 14px; margin-top: 20px;">
+                Need help? Our support team is here for you! <a href="mailto:support@laborrow.com" style="color: #1d4ed8; text-decoration: none; font-weight: 600;">Contact us</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
+          &copy; 2025 Laborrow. All rights reserved.
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+    `;
+
+    const send = await transporter.sendMail({
+        from: process.env.G_EMAIL,
+        to: to,
+        subject: "Welcome to LaBorrow - The Best Place to Share Your Tech!",
+        html: htmlTemplate,
+    });
+
+    console.log('Email sent:', send);
+};
+

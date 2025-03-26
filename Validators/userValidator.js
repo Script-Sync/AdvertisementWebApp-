@@ -2,7 +2,7 @@ import Joi from "joi";
 
 // User validation schema
 export const userValidator = Joi.object({
-   username: Joi.string().required(),
+   username: Joi.string(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
     confirmPassword: Joi.string().required(),
