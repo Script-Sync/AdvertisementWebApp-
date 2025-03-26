@@ -9,7 +9,7 @@ const ad = new Schema(
     image: [{ type: String, required: true }],
     quantity: { type: Number, required: true },
     category:{type:String, required:true, enum:['Television & Accessories', 'video Games', 'Computer Accessories','Audio Systems']},
-    adminId: { type: Types.ObjectId, required: true, ref: "Admin" },
+    adminId: { type: Types.ObjectId, required: false, ref: "Admin" },
   },
   { timestamps: true }
 );
