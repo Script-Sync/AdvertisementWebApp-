@@ -8,7 +8,7 @@ import {
 export const addAdvert = async (req, res, next) => {
   try {
     const { error, value } = addAdevertDetails.validate({
-      adminId: req.body.adminId,
+      adminId: req.auth.id,
       ...req.body,
       image: req.file?.filename,
     });
@@ -52,7 +52,10 @@ export const getAdvertById = async (req, res, next) => {
 //Update an advert
 export const replaceAdvert = async (req, res, next) => {
   // Validate incoming request (excluding image)
-  const { error } = replaceAdvertdetails.validate(req.body);
+  const { error } = replaceAdvertdetails.validate({
+    ...req.body,
+    image: req.file?.filename,
+  });
   if (error) {
     return res.status(400).json({ message: error.details[0].message });
   }
@@ -67,7 +70,7 @@ export const replaceAdvert = async (req, res, next) => {
     { _id: req.params.id },
     {
       ...req.body,
-      image: req.file.filename,
+      image: req.file?.filename,
     },
     { new: true }
   );

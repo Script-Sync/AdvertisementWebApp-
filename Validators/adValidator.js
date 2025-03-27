@@ -8,8 +8,9 @@ export const addAdevertDetails = Joi.object({
     image:Joi.string().required(),
     quantity: Joi.number().integer().required(),
     adminId:Joi.string().optional(),
-    category: Joi.string().required().valid('Television & Accessories', 'video Games', 'Computer Accessories', 'Audio Systems'),
-    quantity: Joi.number().integer().required()
+    category: Joi.string().required().valid('Television & Accessories', 'Video Games', 'Computer Accessories', 'Audio Systems', 'Automotive', 'Smartphones'),
+    rating: Joi.number().min(0).max(5).allow(null).optional(),
+    
 })
 
 export const replaceAdvertdetails = Joi.object({
@@ -18,5 +19,7 @@ export const replaceAdvertdetails = Joi.object({
     description:Joi.string().required(),
     image:Joi.string().required(),
     quantity: Joi.number().integer().required(),
-    adminId:Joi.string().required()
+    category: Joi.string().required().valid('Television & Accessories', 'Video Games', 'Computer Accessories', 'Audio Systems', 'Automotive', 'Smartphones'),
+    rating: Joi.number().min(0).max(5).allow(null).optional()
+
 })

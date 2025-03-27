@@ -32,7 +32,7 @@ export const registerAdmin = async (req, res, next) => {
   // Admin Registration email
   const sendWelcomeEmail = sendEmailAdmin(
     newAdmin.email,
-    ` ${newAdmin.username} Your Admin Portal`
+    ` ${newAdmin.username}`
   )
 };
 

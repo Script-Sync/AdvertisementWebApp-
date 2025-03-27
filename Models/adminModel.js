@@ -8,8 +8,8 @@ const adminSchema = new Schema(
     password: { type: String, required: true },
     role: {
       type: String,
-      default: "user",
-      enum: ["user", "admin", "superadmin"],
+      default: "admin",
+      enum: ["admin", "superadmin"],
     },
   },
   { timestamps: true }

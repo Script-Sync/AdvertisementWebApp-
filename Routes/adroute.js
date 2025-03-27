@@ -17,7 +17,7 @@ advertsRouter.get("/ads", getAllAdverts);
 
 advertsRouter.get("/ads/:id", getAdvertById);
 
-advertsRouter.put("/:id", isAuthenticated, isAuthorized, productImageUpload.single("image"), replaceAdvert);
+advertsRouter.put("/:id", isAuthenticated, isAuthorized(['admin','superadmin']), productImageUpload.single("image"), replaceAdvert);
 
 advertsRouter.delete("/:id", isAuthenticated,isAuthorized(['admin','superadmin']), deleteAdvert);
 

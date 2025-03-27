@@ -22,13 +22,13 @@ export const sendEmail = async (to, userName, dashboardUrl) => {
                 .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: center; }
                 h1 { color: #333; }
                 p { font-size: 16px; color: #555; }
-                .btn { display: inline-block; background-color:  #DDA0DD; color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; }
+                .btn { display: inline-block; background-color:  #5c7bd9; color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; }
                 .footer { margin-top: 20px; font-size: 12px; color: #777; }
             </style>
         </head>
         <body>
             <div class="container">
-                <h1>Welcome to LaBorrow, ${userName}!</h1>
+                <h1 "style="color: #5c7bd9; font-size: 24px; font-weight: 600;">Welcome to LaBorrow, ${userName}!</h1>
                 <p>Your journey to <strong>seamless tech rentals</strong> and <strong>powerful gadget advertising</strong> starts now.</p>
                 <p>At <strong>LaBorrow</strong>, you can explore an ever-growing marketplace where tech lovers <strong>rent gadgets hassle-free</strong> and vendors <strong>showcase their best products</strong>.</p>
                 <p>Ready to get started? Click below and dive into the future of tech accessibility!</p>
@@ -61,7 +61,7 @@ export const sendEmailAdmin = async (to, adminName, dashboardUrl) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Laborrow</title>
+  <title>Welcome to LaBorrow</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
   </style>
@@ -74,9 +74,9 @@ export const sendEmailAdmin = async (to, adminName, dashboardUrl) => {
           <tr>
             <td align="center">
               <img src="https://via.placeholder.com/150" alt="Laborrow Logo" style="width: 120px; margin-bottom: 20px;">
-              <h1 style="color: #1d4ed8; font-size: 24px; font-weight: 600;">Welcome to Laborrow!, ${adminName}! </h1>
+              <h1 style="color: #5c7bd9; font-size: 24px; font-weight: 600;">Welcome to LaBorrow,${adminName}! </h1>
               <p style="color: #374151; font-size: 16px; line-height: 1.6;">
-                Congratulations on joining Laborrow, the ultimate rental platform for electronic gadgets. 
+                Congratulations on joining LaBorrow, the ultimate rental platform for electronic gadgets and more. 
                 We are thrilled to have you on board!
               </p>
               <p style="color: #374151; font-size: 16px; line-height: 1.6;">
@@ -84,17 +84,18 @@ export const sendEmailAdmin = async (to, adminName, dashboardUrl) => {
                 reaching a wide range of customers looking for short-term tech solutions. Our platform is 
                 designed to ensure a seamless experience for you.
               </p>
-              <a href="${dashboardUrl}" style="display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #1d4ed8; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+              <a href="${dashboardUrl}" style="display: inline-block; margin-top: 20px; padding: 12px 24px; background-color: #5c7bd9; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                 Get Started
               </a>
+              <h4> Your Admin Portal Awaits!</h4>
               <p style="color: #374151; font-size: 14px; margin-top: 20px;">
-                Need help? Our support team is here for you! <a href="mailto:support@laborrow.com" style="color: #1d4ed8; text-decoration: none; font-weight: 600;">Contact us</a>
+                Need help? Our support team is here for you! <a href="mailto:support@laBorrow.com" style="color: #5c7bd9; text-decoration: none; font-weight: 600;">Contact us</a>
               </p>
             </td>
           </tr>
         </table>
         <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
-          &copy; 2025 Laborrow. All rights reserved.
+          &copy; 2025 LaBorrow. All rights reserved.
         </p>
       </td>
     </tr>
