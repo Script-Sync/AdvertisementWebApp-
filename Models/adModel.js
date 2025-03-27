@@ -8,7 +8,8 @@ const ad = new Schema(
     description: { type: String, required: true },
     image: [{ type: String, required: true }],
     quantity: { type: Number, required: true },
-    category:{type:String, required:true, enum:['Television & Accessories', 'video Games', 'Computer Accessories','Audio Systems']},
+    category:{type:String, required:true, enum:['Television & Accessories', 'Video Games', 'Computer Accessories','Audio Systems', 'Automotive', 'Smartphones']},
+    rating: { type: Number, min: 0, max: 5 },
     adminId: { type: Types.ObjectId, required: false, ref: "Admin" },
   },
   { timestamps: true }
